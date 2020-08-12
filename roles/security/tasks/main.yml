@@ -1,0 +1,19 @@
+- name: Secure SSH
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - { regexp: '^#?PasswordAuthentication', line: 'PasswordAuthentication no' }
+    - { regexp: '#?PermitEmptyPasswords', line: 'PermitEmptyPasswords no' }
+    - { regexp: '^#?PermitRootLogin', line: 'PermitRootLogin no' }
+
+- name: Stop ssh daemon
+  service:
+    name: ssh
+    state: stopped
+
+- name: Start ssh daemon
+  service:
+    name: ssh
+    state: started

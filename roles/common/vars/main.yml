@@ -1,0 +1,22 @@
+---
+pakages:
+  - curl
+  - direnv
+  - git
+  - git
+  - htop
+  - imagemagick
+  - jq
+  - neovim
+  - ntp
+  - openssl
+  - shellcheck
+  - software-properties-common
+  - sqlite3
+  - sudo
+  - tar
+  - tig
+  - tmux
+  - tzdata
+  - unzip
+timezone: Europe/Warsaw

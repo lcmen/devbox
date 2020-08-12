@@ -1,0 +1,9 @@
+---
+asdf_url: https://github.com/asdf-vm/asdf.git
+asdf_branch: v0.8.0-rc1
+asdf_plugins:
+  - elixir
+  - erlang
+  - nodejs
+  - ruby
+

@@ -1,0 +1,19 @@
+---
+- name: System upgrade
+  apt:
+    upgrade: safe
+    update-cache: yes
+
+- name: Install common packages
+  package:
+    name: {{item}}
+    state: latest
+  with_items: {{packages}}
+
+- name: Configure time zone
+  command: timedatectl set-timezone {{ timezone }}
+
+- name: Ensure NTP is running
+  service:
+    name: ntp
+    state: started

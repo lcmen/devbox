@@ -1,0 +1,19 @@
+---
+- name: Check if asdf installed
+  stat:
+    path: ~/.asdf
+  register: asdf
+
+- name: Install asdf
+  shell: git clone {{asdf_url}} ~/.asdf --branch {{asdf_branch}}
+  when: asdf.stat.exists == False
+
+- name: Update asdf
+  shell: ~/.asdf/bin/asdf update
+
+- name: Install asdf plugins
+  shell: asdf plugin add {{item}}
+  with_items: {{asdf_plugins}}
+
+- name: Install code-server
+  shell: curl -fsSL https://code-server.dev/install.sh | sh
