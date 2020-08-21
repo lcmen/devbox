@@ -1,6 +1,6 @@
-# DevBox
+# devbox
 
-Ansible script to provision my development environment based on Ubuntu (ElementaryOS, pop_os!, etc.).
+Ansible playbook to provision my development environment based on Ubuntu and its derivatives (ElementaryOS, Pop!_OS, etc.).
 
 ## Run
 
