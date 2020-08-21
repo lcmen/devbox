@@ -6,31 +6,32 @@
 
 - name: Add keys
   apt_key:
-    url: {{item}}
+    url: "{{item}}"
     state: present
-  with_items: {{keys}}
+  with_items: "{{keys}}"
 
 - name: Add repositories
   apt_repository:
-    repo: {{item}}
+    repo: "{{item}}"
     state: present
-  with_items: {{repositories}}
+  with_items: "{{repositories}}"
 
 - name: Install packages
   package:
-    name: {{item}}
+    name: "{{item}}"
     state: latest
-  with_items: {{packages}}
+  with_items: "{{packages}}"
 
-- name: Install flatpak apps:
+- name: Install flatpak apps
   flatpak:
-    name: {{item}}
-    remote: flathub
+    name: "{{item}}"
+    method: user
     state: present
-  with_items: {{flatpaks}}
+  become: no
+  with_items: "{{flatpaks}}"
 
 - name: Configure time zone
-  command: timedatectl set-timezone {{ timezone }}
+  command: "timedatectl set-timezone {{ timezone }}"
 
 - name: Ensure NTP is running
   service:

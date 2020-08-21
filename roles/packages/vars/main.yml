@@ -8,7 +8,7 @@ flatpaks:
   - com.valvesoftware.Steam
   - io.github.liberodark.OpenDrive
   - org.videolan.VLC
-pakages:
+packages:
   - build-essential
   - chrome-gnome-shell
   - code
