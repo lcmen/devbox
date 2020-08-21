@@ -1,4 +1,10 @@
 ---
+- name: Install common libs
+  package:
+    name: {{item}}
+    state: latest
+  with_items: {{libs}}
+
 - name: Check if asdf installed
   stat:
     path: ~/.asdf
@@ -9,11 +15,18 @@
   when: asdf.stat.exists == False
 
 - name: Update asdf
+  shell: asdf update
+  when: asdf.stat.exists == True
+
+- name: Update asdf
   shell: ~/.asdf/bin/asdf update
 
 - name: Install asdf plugins
   shell: asdf plugin add {{item}}
   with_items: {{asdf_plugins}}
 
-- name: Install code-server
-  shell: curl -fsSL https://code-server.dev/install.sh | sh
+- name: Install mkcert
+  get_url:
+    url: {{mkcert_url}}
+    dest: /usr/local/bin/mkcert
+    mode: '0755'

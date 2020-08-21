@@ -2,8 +2,17 @@
 asdf_url: https://github.com/asdf-vm/asdf.git
 asdf_branch: v0.8.0-rc1
 asdf_plugins:
-  - elixir
-  - erlang
+  - golang
+  - imagemagick
   - nodejs
+  - python
   - ruby
-
+mkcert_url: https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
+libs:
+  - liblzma-dev
+  - libncurses5-dev
+  - libnss3-tools
+  - libpq-dev
+  - libreadline-dev
+  - libssl-dev
+  - zlib1g-dev

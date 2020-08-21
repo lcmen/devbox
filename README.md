@@ -1,9 +1,9 @@
 # DevBox
 
-Ansible script to provision my development environment box ran inside WSL2.
+Ansible script to provision my development environment based on Ubuntu (ElementaryOS, pop_os!, etc.).
 
 ## Run
 
 ```
-ansible-playbook -i inventories/local site.yml
+./setup.sh
 ```

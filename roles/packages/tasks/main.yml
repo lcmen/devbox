@@ -1,0 +1,38 @@
+---
+- name: System upgrade
+  apt:
+    upgrade: safe
+    update-cache: yes
+
+- name: Add keys
+  apt_key:
+    url: {{item}}
+    state: present
+  with_items: {{keys}}
+
+- name: Add repositories
+  apt_repository:
+    repo: {{item}}
+    state: present
+  with_items: {{repositories}}
+
+- name: Install packages
+  package:
+    name: {{item}}
+    state: latest
+  with_items: {{packages}}
+
+- name: Install flatpak apps:
+  flatpak:
+    name: {{item}}
+    remote: flathub
+    state: present
+  with_items: {{flatpaks}}
+
+- name: Configure time zone
+  command: timedatectl set-timezone {{ timezone }}
+
+- name: Ensure NTP is running
+  service:
+    name: ntp
+    state: started

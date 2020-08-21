@@ -1,0 +1,41 @@
+---
+keys:
+  - http://deb.tableplus.com/apt.tableplus.com.gpg.key
+  - https://dl-ssl.google.com/linux/linux_signing_key.pub
+flatpaks:
+  - com.skype.Client
+  - com.visualstudio.code
+  - com.valvesoftware.Steam
+  - io.github.liberodark.OpenDrive
+  - org.videolan.VLC
+pakages:
+  - build-essential
+  - chrome-gnome-shell
+  - code
+  - curl
+  - direnv
+  - git
+  - gnome-shell-extensions
+  - google-chrome-stable
+  - htop
+  - jq
+  - neovim
+  - ntp
+  - openssl
+  - patch
+  - shellcheck
+  - silversearcher-ag
+  - software-properties-common
+  - sudo
+  - tableplus
+  - tar
+  - tig
+  - tmux
+  - tree
+  - tzdata
+  - unzip
+  - wget
+repositories:
+  - deb [arch=amd64] https://deb.tableplus.com/debian tableplus main
+  - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+timezone: Europe/Warsaw

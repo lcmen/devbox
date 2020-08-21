@@ -1,6 +1,6 @@
 ---
 - hosts: all
   roles:
-    - common
+    - packages
     - security
     - development
