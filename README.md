@@ -5,5 +5,5 @@ Ansible playbook to provision my development environment based on Ubuntu and its
 ## Run
 
 ```
-./setup.sh
+curl https://raw.githubusercontent.com/lowski/devbox/master/setup.sh | bash
 ```
