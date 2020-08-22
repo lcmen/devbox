@@ -22,12 +22,17 @@
     state: latest
   with_items: "{{packages}}"
 
+- name: Add flatpak remotes
+  flatpak_remote:
+    name: "{{item.key}}"
+    flatpakrepo_url: "{{item.value}}"
+    state: present
+  loop: "{{lookup('dict', remotes)}}"
+
 - name: Install flatpak apps
   flatpak:
     name: "{{item}}"
-    method: user
     state: present
-  become: no
   with_items: "{{flatpaks}}"
 
 - name: Configure time zone
