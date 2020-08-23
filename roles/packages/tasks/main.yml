@@ -13,6 +13,7 @@
 - name: Add repositories
   apt_repository:
     repo: "{{item}}"
+    mode: "0600"
     state: present
   with_items: "{{repositories}}"
 
@@ -27,7 +28,7 @@
     name: "{{item.key}}"
     flatpakrepo_url: "{{item.value}}"
     state: present
-  loop: "{{lookup('dict', remotes)}}"
+  with_dict: "{{remotes}}"
 
 - name: Install flatpak apps
   flatpak:
