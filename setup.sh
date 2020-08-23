@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-read -s -p "[sudo] sudo password for $(whoami): " pass
+read -r -s -p "[sudo] sudo password for $(whoami): " pass
 
 echo "${pass}" | sudo -S apt-add-repository --yes --update ppa:ansible/ansible
 echo "${pass}" | sudo -S apt update
