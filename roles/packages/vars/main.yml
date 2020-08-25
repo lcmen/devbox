@@ -30,6 +30,7 @@ packages:
   - tzdata
   - unzip
   - wget
+  - xsel
 remotes:
   flathub: https://flathub.org/repo/flathub.flatpakrepo
 repositories:
