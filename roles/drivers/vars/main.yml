@@ -1,0 +1,12 @@
+---
+packages:
+  amd:
+    - mesa-vulkan-drivers
+  nvidia:
+    - nvidia-driver-450
+    - nvidia-settings
+repositories:
+  amd:
+    - ppa:oibaf/graphics-drivers
+  nvidia:
+    - ppa:graphics-drivers/ppa

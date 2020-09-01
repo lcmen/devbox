@@ -1,7 +1,10 @@
 ---
 - hosts: all
   roles:
+    - drivers
     - packages
     - security
     - development
   become: yes
+  vars:
+    driver: amd
