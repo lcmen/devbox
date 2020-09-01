@@ -3,10 +3,10 @@
   apt_repository:
     repo: "{{item}}"
     state: present
-  with_items: "{{repositories}}.{{driver}}"
+  with_items: "{{repositories[driver]}}"
 
 - name: Install drivers
   package:
     name: "{{item}}"
     state: latest
-  with_items: "{{packages}}.{{driver}}"
+  with_items: "{{packages[driver]}}"

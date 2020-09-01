@@ -23,8 +23,13 @@
 
 - name: Install asdf plugins
   shell: "~/.asdf/bin/asdf plugin add {{item}}"
+  ignore_errors: yes
   become: no
   with_items: "{{asdf_plugins}}"
+
+- name: Update asdf plugins
+  shell: "~/.asdf/bin/asdf plugin update --all"
+  become: no
 
 - name: Install mkcert
   get_url:
