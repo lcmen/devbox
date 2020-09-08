@@ -4,6 +4,5 @@ Ansible playbook to provision my development environment based on Ubuntu and its
 
 ## Run
 
-```
-curl https://raw.githubusercontent.com/lowski/devbox/master/setup.sh | bash
-```
+1. Clone the repository
+2. Run `./setup.sh`
