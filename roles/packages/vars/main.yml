@@ -1,12 +1,14 @@
 ---
 keys:
   - https://dl-ssl.google.com/linux/linux_signing_key.pub
+  - https://packages.microsoft.com/keys/microsoft.asc
 flatpaks:
   - com.skype.Client
   - com.valvesoftware.Steam
 packages:
   - build-essential
   - chrome-gnome-shell
+  - code
   - curl
   - direnv
   - elementary-tweaks
@@ -35,5 +37,6 @@ remotes:
   flathub: https://flathub.org/repo/flathub.flatpakrepo
 repositories:
   - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+  - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw
