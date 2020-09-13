@@ -6,6 +6,7 @@ flatpaks:
   - com.skype.Client
   - com.valvesoftware.Steam
 packages:
+  - arc-theme
   - build-essential
   - chrome-gnome-shell
   - code
@@ -13,6 +14,7 @@ packages:
   - direnv
   - elementary-tweaks
   - git
+  - gparted
   - google-chrome-stable
   - htop
   - jq
@@ -20,6 +22,7 @@ packages:
   - ntp
   - openssh-server
   - openssl
+  - papirus-icon-theme
   - patch
   - shellcheck
   - silversearcher-ag
@@ -38,5 +41,7 @@ remotes:
 repositories:
   - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
   - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+  - ppa:fossfreedom/arc-gtk-theme-daily
+  - ppa:papirus/papirus
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw
