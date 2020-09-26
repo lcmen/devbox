@@ -9,6 +9,7 @@
     url: "{{item}}"
     state: present
   with_items: "{{keys}}"
+  when: keys is defined
 
 - name: Add repositories
   apt_repository:
@@ -22,6 +23,16 @@
     state: latest
   with_items: "{{packages}}"
 
+- name: Remove default flatpak
+  package:
+    name: flatpack
+    state: absent
+
+- name: Install latest flatpak
+  apt:
+    name: flatpak
+    default_release: bionic
+
 - name: Add flatpak remotes
   flatpak_remote:
     name: "{{item.key}}"
@@ -31,9 +42,12 @@
 
 - name: Install flatpak apps
   flatpak:
-    name: "{{item}}"
+    name: "{{item.1}}"
+    remote: "{{item.0.remote}}"
     state: present
-  with_items: "{{flatpaks}}"
+  with_subelements:
+    - "{{flatpaks}}"
+    - "names"
 
 - name: Configure time zone
   command: "timedatectl set-timezone {{ timezone }}"

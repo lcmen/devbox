@@ -1,20 +1,22 @@
 ---
-keys:
 flatpaks:
-  - com.google.Chrome
-  - com.skype.Client
-  - com.visualstudio.code
+  - remote: flathub
+    names:
+      - com.skype.Client
+      - com.visualstudio.code
+  - remote: flathub-beta
+    names:
+      - com.google.Chrome
 packages:
   - arc-theme
   - build-essential
   - chrome-gnome-shell
-  - code
   - curl
   - direnv
   - elementary-tweaks
+  - flatpak
   - git
   - gparted
-  - google-chrome-stable
   - htop
   - jq
   - lsb
@@ -38,7 +40,9 @@ packages:
   - xsel
 remotes:
   flathub: https://flathub.org/repo/flathub.flatpakrepo
+  flathub-beta: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 repositories:
+  - ppa:alexlarsson/flatpak
   - ppa:fossfreedom/arc-gtk-theme-daily
   - ppa:neovim-ppa/stable
   - ppa:papirus/papirus
