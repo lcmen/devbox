@@ -9,10 +9,12 @@ asdf_plugins:
   - ruby
 mkcert_url: https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
 libs:
+  - dconf-cli
   - liblzma-dev
   - libncurses5-dev
   - libnss3-tools
   - libpq-dev
   - libreadline-dev
   - libssl-dev
+  - uuid-runtime
   - zlib1g-dev

@@ -17,6 +17,7 @@ packages:
   - google-chrome-stable
   - htop
   - jq
+  - lsb
   - neovim
   - ntp
   - openssh-server
@@ -39,6 +40,7 @@ remotes:
   flathub: https://flathub.org/repo/flathub.flatpakrepo
 repositories:
   - ppa:fossfreedom/arc-gtk-theme-daily
+  - ppa:neovim-ppa/stable
   - ppa:papirus/papirus
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw

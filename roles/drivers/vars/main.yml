@@ -1,12 +1,16 @@
 ---
 packages:
-  amd:
-    - mesa-vulkan-drivers
-  nvidia:
-    - nvidia-driver-450
-    - nvidia-settings
+  - driver: amd
+    names:
+      - mesa-vulkan-drivers
+  - driver: nvidia
+    names:
+      - nvidia-driver-450
+      - nvidia-settings
 repositories:
-  amd:
-    - ppa:oibaf/graphics-drivers
-  nvidia:
-    - ppa:graphics-drivers/ppa
+  - driver: amd
+    sources:
+      - ppa:oibaf/graphics-drivers
+  - driver: nvidia
+    sources:
+      - ppa:graphics-drivers/ppa

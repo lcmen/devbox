@@ -1,12 +1,30 @@
 ---
-- name: Add repositories
+- name: Add driver repositories
   apt_repository:
-    repo: "{{item}}"
+    repo: "{{item.1}}"
     state: present
-  with_items: "{{repositories[driver]}}"
+  with_subelements:
+    - "{{repositories}}"
+    - "sources"
+  when: "item.0.driver in drivers"
 
-- name: Install drivers
+- name: Create drivers directory
+  file:
+    path: "/tmp/drivers"
+    state: directory
+
+- name: Install driver debs
+  apt:
+    deb: "{{item}}"
+    state: present
+  with_fileglob:
+    - "/tmp/drivers/*.deb"
+
+- name: Install driver packages
   package:
-    name: "{{item}}"
+    name: "{{item.1}}"
     state: latest
-  with_items: "{{packages[driver]}}"
+  with_subelements:
+    - "{{packages}}"
+    - "names"
+  when: "item.0.driver in drivers"

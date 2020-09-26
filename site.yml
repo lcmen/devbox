@@ -7,4 +7,5 @@
     - development
   become: yes
   vars:
-    driver: amd
+    drivers:
+      - amd
