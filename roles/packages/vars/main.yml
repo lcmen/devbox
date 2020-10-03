@@ -1,4 +1,6 @@
 ---
+keys:
+  - https://brave-browser-apt-release.s3.brave.com/brave-core.asc
 flatpaks:
   - remote: flathub
     names:
@@ -9,6 +11,7 @@ flatpaks:
       - com.google.Chrome
 packages:
   - arc-theme
+  - brave-browser
   - build-essential
   - chrome-gnome-shell
   - curl
@@ -42,6 +45,7 @@ remotes:
   flathub: https://flathub.org/repo/flathub.flatpakrepo
   flathub-beta: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 repositories:
+  - deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
   - ppa:alexlarsson/flatpak
   - ppa:fossfreedom/arc-gtk-theme-daily
   - ppa:neovim-ppa/stable
