@@ -10,7 +10,6 @@ flatpaks:
     names:
       - com.google.Chrome
 packages:
-  - arc-theme
   - brave-browser
   - build-essential
   - chrome-gnome-shell
@@ -47,7 +46,6 @@ remotes:
 repositories:
   - deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
   - ppa:alexlarsson/flatpak
-  - ppa:fossfreedom/arc-gtk-theme-daily
   - ppa:neovim-ppa/stable
   - ppa:papirus/papirus
   - ppa:philip.scott/elementary-tweaks
