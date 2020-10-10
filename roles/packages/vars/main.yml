@@ -1,16 +1,11 @@
 ---
 keys:
-  - https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+  - https://repo.vivaldi.com/archive/linux_signing_key.pub
 flatpaks:
-  - remote: flathub
-    names:
-      - com.skype.Client
-      - com.visualstudio.code
-  - remote: flathub-beta
-    names:
-      - com.google.Chrome
+  - org.chromium.ChromiumBrowser
+  - com.skype.Client
+  - com.visualstudio.code
 packages:
-  - brave-browser
   - build-essential
   - chrome-gnome-shell
   - curl
@@ -26,7 +21,6 @@ packages:
   - ntp
   - openssh-server
   - openssl
-  - papirus-icon-theme
   - patch
   - shellcheck
   - silversearcher-ag
@@ -39,14 +33,16 @@ packages:
   - tzdata
   - unzip
   - wget
+  - vivaldi-stable
   - xsel
-remotes:
-  flathub: https://flathub.org/repo/flathub.flatpakrepo
-  flathub-beta: https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+removed_packages:
+  - epiphany-browser
+  - epiphany-browser-data
+  - epiphany-browser-data
+  - epiphany-extensions
+  - pantheon-mail
 repositories:
-  - deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
-  - ppa:alexlarsson/flatpak
+  - deb https://repo.vivaldi.com/archive/deb/ stable main
   - ppa:neovim-ppa/stable
-  - ppa:papirus/papirus
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw

@@ -23,31 +23,17 @@
     state: latest
   with_items: "{{packages}}"
 
-- name: Remove default flatpak
+- name: Remove packages
   package:
-    name: flatpack
+    name: "{{item}}"
     state: absent
-
-- name: Install latest flatpak
-  apt:
-    name: flatpak
-    default_release: bionic
-
-- name: Add flatpak remotes
-  flatpak_remote:
-    name: "{{item.key}}"
-    flatpakrepo_url: "{{item.value}}"
-    state: present
-  with_dict: "{{remotes}}"
+  with_items: "{{removed_packages}}"
 
 - name: Install flatpak apps
   flatpak:
-    name: "{{item.1}}"
-    remote: "{{item.0.remote}}"
+    name: "{{item}}"
     state: present
-  with_subelements:
-    - "{{flatpaks}}"
-    - "names"
+  with_items: "{{flatpaks}}"
 
 - name: Configure time zone
   command: "timedatectl set-timezone {{ timezone }}"
