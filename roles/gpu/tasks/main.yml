@@ -6,12 +6,13 @@
   with_subelements:
     - "{{repositories}}"
     - "sources"
-  when: "item.0.brand == gpu"
+  when: "gpu is defined and item.0.brand == gpu"
 
 - name: Create gpu drivers directory
   file:
     path: "/tmp/gpu"
     state: directory
+  when: gpu is defined
 
 - name: Install gpu driver debs
   apt:
@@ -19,11 +20,13 @@
     state: present
   with_fileglob:
     - "/tmp/gpu/*.deb"
+  when: gpu is defined
 
 - name: Remove gpu driver directory
   file:
     path: "/tmp/gpu"
     state: absent
+  when: gpu is defined
 
 - name: Install gpu driver packages
   package:
@@ -32,4 +35,4 @@
   with_subelements:
     - "{{packages}}"
     - "names"
-  when: "item.0.brand == gpu"
+  when: "gpu is defined and item.0.brand == gpu"
