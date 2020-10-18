@@ -1,0 +1,16 @@
+---
+packages:
+  - brand: amd
+    names:
+      - mesa-vulkan-drivers
+  - brand: nvidia
+    names:
+      - nvidia-driver-450
+      - nvidia-settings
+repositories:
+  - brand: amd
+    sources:
+      - ppa:oibaf/graphics-drivers
+  - brand: nvidia
+    sources:
+      - ppa:graphics-drivers/ppa

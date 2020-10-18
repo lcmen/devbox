@@ -1,24 +1,27 @@
 ---
-asdf_url: https://github.com/asdf-vm/asdf.git
-asdf_branch: v0.8.0-rc1
-asdf_plugins:
-  - golang
-  - imagemagick
-  - nodejs
-  - python
-  - ruby
+anyenv_url: https://github.com/anyenv/anyenv.git
+anyenv_updater_url: https://github.com/znz/anyenv-update.git
+anyenv_plugins:
+  - nodenv
+  - rbenv
 mkcert_url: https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
-libs:
+packages:
   - cmake
-  - dconf-cli
-  - libconfig++-dev
-  - libevdev-dev
-  - liblzma-dev
+  - containerd.io
+  - curl
+  - direnv
+  - docker-ce
+  - docker-ce-cli
+  - git
+  - imagemagick
+  - jq
+  - libmagickwand-dev
   - libncurses5-dev
-  - libnss3-tools
   - libpq-dev
-  - libreadline-dev
-  - libssl-dev
-  - libudev-dev
-  - uuid-runtime
-  - zlib1g-dev
+  - shellcheck
+removed_packages:
+  - containerd
+  - docker
+  - docker-engine
+  - docker.io
+  - runc

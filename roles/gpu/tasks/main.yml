@@ -1,0 +1,35 @@
+---
+- name: Add gpu driver repositories
+  apt_repository:
+    repo: "{{item.1}}"
+    state: present
+  with_subelements:
+    - "{{repositories}}"
+    - "sources"
+  when: "item.0.brand == gpu"
+
+- name: Create gpu drivers directory
+  file:
+    path: "/tmp/gpu"
+    state: directory
+
+- name: Install gpu driver debs
+  apt:
+    deb: "{{item}}"
+    state: present
+  with_fileglob:
+    - "/tmp/gpu/*.deb"
+
+- name: Remove gpu driver directory
+  file:
+    path: "/tmp/gpu"
+    state: absent
+
+- name: Install gpu driver packages
+  package:
+    name: "{{item.1}}"
+    state: latest
+  with_subelements:
+    - "{{packages}}"
+    - "names"
+  when: "item.0.brand == gpu"

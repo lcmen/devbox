@@ -17,17 +17,17 @@
     state: present
   with_items: "{{repositories}}"
 
-- name: Install packages
-  package:
-    name: "{{item}}"
-    state: latest
-  with_items: "{{packages}}"
-
 - name: Remove packages
   package:
     name: "{{item}}"
     state: absent
   with_items: "{{removed_packages}}"
+
+- name: Install packages
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items: "{{packages}}"
 
 - name: Install flatpak apps
   flatpak:

@@ -1,34 +1,56 @@
 ---
-- name: Install common lib packages
+- name: Remove packages
+  package:
+    name: "{{item}}"
+    state: absent
+  with_items: "{{removed_packages}}"
+
+- name: Install packages
   package:
     name: "{{item}}"
     state: latest
-  with_items: "{{libs}}"
+  with_items: "{{packages}}"
 
-- name: Check if asdf installed
+- name: Disable iptables for Docker
+  lineinfile:
+    dest: /etc/default/docker
+    regexp: "^#?DOCKER_OPTS"
+    line: "DOCKER_OPTS=\"--dns 8.8.8.8 --dns 8.8.4.4 --iptables=false\""
+
+- name: Restart Docker
+  service:
+    name: docker
+    state: restarted
+
+- name: Check if anyenv installed
   stat:
-    path: "~/.asdf"
+    path: "~/.anyenv"
   become: no
-  register: asdf
+  register: anyenv
 
-- name: Install asdf
-  shell: "git clone {{asdf_url}} ~/.asdf --branch {{asdf_branch}}"
+- name: Install anyenv
+  shell: "git clone {{anyenv_url}} ~/.anyenv"
   become: no
-  when: asdf.stat.exists == False
+  when: anyenv.stat.exists == False
 
-- name: Update asdf
-  shell: "~/.asdf/bin/asdf update"
+- name: Install anyenv updater
+  shell: "git clone {{anyenv_updater_url}} ~/.anyenv/plugins/anyenv-update"
   become: no
-  when: asdf.stat.exists == True
+  when: anyenv.stat.exists == False
 
-- name: Install asdf plugins
-  shell: "~/.asdf/bin/asdf plugin add {{item}}"
+- name: Initialize anyenv
+  shell: "~/.anyenv/bin/anyenv install --init"
+  become: no
+  when: anyenv.stat.exists == Fale
+
+- name: Install anyenv plugins
+  shell: "~/.anyenv/bin/anyenv install {{item}}"
+  become: no
   ignore_errors: yes
-  become: no
-  with_items: "{{asdf_plugins}}"
+  with_items: "{{anyenv_plugins}}"
 
-- name: Update asdf plugins
-  shell: "~/.asdf/bin/asdf plugin update --all"
+- name: Update anyenv
+  shell: "~/.anyenv/bin/anyenv update"
   become: no
 
 - name: Install mkcert
