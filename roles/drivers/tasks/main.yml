@@ -8,16 +8,16 @@
 - name: Clone logiops
   git:
     repo: https://github.com/PixlOne/logiops.git
-    dest: ~/Projects/src/github.com/PixlOne/logiops
+    dest: ~/Code/src/github.com/PixlOne/logiops
   become: no
 
 - name: Build logiops
   shell: mkdir build && cd build && cmake .. && make
   args:
-    chdir: ~/Projects/src/github.com/PixlOne/logiops
+    chdir: ~/Code/src/github.com/PixlOne/logiops
   become: no
 
 - name: Install logiops
   shell: make install
   args:
-    chdir: "/home/{{lookup('env', 'USER')}}/src/github.com/PixlOne/logiops"
+    chdir: "/home/{{lookup('env', 'USER')}}/Code/src/github.com/PixlOne/logiops"

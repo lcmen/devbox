@@ -12,11 +12,13 @@ packages:
   - flatpak
   - gparted
   - htop
+  - libreoffice
   - lsb
   - neovim
   - ntp
   - openssh-server
   - openssl
+  - pantheon-mail
   - patch
   - silversearcher-ag
   - software-properties-common
@@ -34,9 +36,9 @@ removed_packages:
   - epiphany-browser-data
   - epiphany-browser-data
   - epiphany-extensions
-  - pantheon-mail
 repositories:
   - deb [arch=amd64] https://download.docker.com/linux/ubuntu
+  - ppa:libreoffice/ppa
   - ppa:neovim-ppa/stable
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw
