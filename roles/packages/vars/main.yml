@@ -1,8 +1,5 @@
 ---
-keys:
-  - https://download.docker.com/linux/ubuntu/gpg
 flatpaks:
-  - org.chromium.ChromiumBrowser
   - com.skype.Client
   - com.visualstudio.code
 packages:
@@ -12,7 +9,6 @@ packages:
   - flatpak
   - gparted
   - htop
-  - libreoffice
   - lsb
   - neovim
   - ntp
@@ -37,8 +33,6 @@ removed_packages:
   - epiphany-browser-data
   - epiphany-extensions
 repositories:
-  - deb [arch=amd64] https://download.docker.com/linux/ubuntu
-  - ppa:libreoffice/ppa
   - ppa:neovim-ppa/stable
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw

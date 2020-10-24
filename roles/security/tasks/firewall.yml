@@ -1,0 +1,58 @@
+---
+- name: Check if Docker installed
+  shell: "which docker"
+  register: docker_is_installed
+  failed_when: docker_is_installed.rc > 1
+
+- name: Install Firewall
+  package:
+    name: ufw
+    state: latest
+
+- name: Disable firewall
+  ufw:
+    state: disabled
+
+- name: Reset firewall configuration
+  ufw:
+    state: reset
+
+- name: Clear out all iptables rules
+  shell: iptables -F && iptables -X
+
+- name: Enable forward policy
+  lineinfile:
+    dest: /etc/default/ufw
+    regexp: '^#?DEFAULT_FORWARD_POLICY'
+    line: 'DEFAULT_FORWARD_POLICY="ACCEPT"'
+
+- name: Deny incoming traffic by default
+  ufw:
+    default: deny
+    name: incoming
+
+- name: Allow outgoing traffic by default
+  ufw:
+    default: allow
+    name: outgoing
+
+- name: Allow ssh
+  ufw:
+    rule: allow
+    port: '22'
+    proto: tcp
+
+- name: Configure ufw before rules for docker
+  blockinfile:
+    path: /etc/ufw/before.rules
+    insertbefore: '^\*filter'
+    block: |
+      *nat
+      :POSTROUTING ACCEPT [0:0]
+      -A POSTROUTING ! -o docker0 -s 172.17.0.0/16 -j MASQUERADE
+      COMMIT
+  when: docker_is_installed.rc == 0
+
+- name: Enable firewall
+  ufw:
+    state: enabled

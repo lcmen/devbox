@@ -4,6 +4,8 @@ anyenv_updater_url: https://github.com/znz/anyenv-update.git
 anyenv_plugins:
   - nodenv
   - rbenv
+keys:
+  - https://download.docker.com/linux/ubuntu/gpg
 mkcert_url: https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
 packages:
   - cmake
@@ -25,3 +27,5 @@ removed_packages:
   - docker-engine
   - docker.io
   - runc
+repositories:
+  - deb [arch=amd64] https://download.docker.com/linux/ubuntu

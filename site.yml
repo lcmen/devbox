@@ -1,11 +1,11 @@
 ---
 - hosts: all
   roles:
+    - packages
     - gpu
     - drivers
-    - packages
-    - security
     - development
+    - security
   become: yes
   vars:
     gpu: amd

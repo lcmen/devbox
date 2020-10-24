@@ -1,4 +1,17 @@
 ---
+- name: Add keys
+  apt_key:
+    url: "{{item}}"
+    state: present
+  with_items: "{{keys}}"
+  when: keys is defined
+
+- name: Add repositories
+  apt_repository:
+    repo: "{{item}}"
+    state: present
+  with_items: "{{repositories}}"
+
 - name: Remove packages
   package:
     name: "{{item}}"
@@ -12,10 +25,21 @@
   with_items: "{{packages}}"
 
 - name: Disable iptables for Docker
-  lineinfile:
-    dest: /etc/default/docker
-    regexp: "^#?DOCKER_OPTS"
-    line: "DOCKER_OPTS=\"--dns 8.8.8.8 --dns 8.8.4.4 --iptables=false\""
+  copy:
+    src: docker-daemon.json
+    dest: /etc/docker/daemon.json
+    mode: 0400
+
+- name: Create docker group
+  group:
+    name: docker
+    state: present
+
+- name: Add user to docker group
+  user:
+    name: "{{lookup('env', 'USER')}}"
+    append: yes
+    groups: docker
 
 - name: Restart Docker
   service:
@@ -39,9 +63,8 @@
   when: anyenv.stat.exists == False
 
 - name: Initialize anyenv
-  shell: "~/.anyenv/bin/anyenv install --init"
+  shell: "yes | ~/.anyenv/bin/anyenv install --init"
   become: no
-  when: anyenv.stat.exists == Fale
 
 - name: Install anyenv plugins
   shell: "~/.anyenv/bin/anyenv install {{item}}"
