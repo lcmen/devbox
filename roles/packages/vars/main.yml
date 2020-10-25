@@ -1,16 +1,20 @@
 ---
 flatpaks:
-  - com.skype.Client
-  - com.visualstudio.code
+  - remote: flathub
+    packages:
+      - com.skype.Client
+      - com.visualstudio.code
 packages:
   - build-essential
   - chrome-gnome-shell
+  - chromium-browser
   - elementary-tweaks
   - flatpak
   - gparted
   - htop
   - lsb
   - neovim
+  - net-tools
   - ntp
   - openssh-server
   - openssl

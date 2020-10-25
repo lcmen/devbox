@@ -1,0 +1,25 @@
+---
+- name: Disable iptables for Docker
+  copy:
+    src: docker-daemon.json
+    dest: /etc/docker/daemon.json
+  become: yes
+
+- name: Create docker group
+  group:
+    name: docker
+    state: present
+  become: yes
+
+- name: Add user to docker group
+  user:
+    name: "{{ansible_env.USER}}"
+    append: yes
+    groups: docker
+  become: yes
+
+- name: Restart Docker
+  service:
+    name: docker
+    state: restarted
+  become: yes

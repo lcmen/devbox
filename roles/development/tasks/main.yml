@@ -3,6 +3,7 @@
   apt_key:
     url: "{{item}}"
     state: present
+  become: yes
   with_items: "{{keys}}"
   when: keys is defined
 
@@ -10,74 +11,38 @@
   apt_repository:
     repo: "{{item}}"
     state: present
+  become: yes
   with_items: "{{repositories}}"
 
 - name: Remove packages
   package:
     name: "{{item}}"
     state: absent
+  become: yes
   with_items: "{{removed_packages}}"
 
 - name: Install packages
   package:
     name: "{{item}}"
     state: latest
+  become: yes
   with_items: "{{packages}}"
-
-- name: Disable iptables for Docker
-  copy:
-    src: docker-daemon.json
-    dest: /etc/docker/daemon.json
-    mode: 0400
-
-- name: Create docker group
-  group:
-    name: docker
-    state: present
-
-- name: Add user to docker group
-  user:
-    name: "{{lookup('env', 'USER')}}"
-    append: yes
-    groups: docker
-
-- name: Restart Docker
-  service:
-    name: docker
-    state: restarted
-
-- name: Check if anyenv installed
-  stat:
-    path: "~/.anyenv"
-  become: no
-  register: anyenv
-
-- name: Install anyenv
-  shell: "git clone {{anyenv_url}} ~/.anyenv"
-  become: no
-  when: anyenv.stat.exists == False
-
-- name: Install anyenv updater
-  shell: "git clone {{anyenv_updater_url}} ~/.anyenv/plugins/anyenv-update"
-  become: no
-  when: anyenv.stat.exists == False
-
-- name: Initialize anyenv
-  shell: "yes | ~/.anyenv/bin/anyenv install --init"
-  become: no
-
-- name: Install anyenv plugins
-  shell: "~/.anyenv/bin/anyenv install {{item}}"
-  become: no
-  ignore_errors: yes
-  with_items: "{{anyenv_plugins}}"
-
-- name: Update anyenv
-  shell: "~/.anyenv/bin/anyenv update"
-  become: no
 
 - name: Install mkcert
   get_url:
     url: "{{mkcert_url}}"
     dest: /usr/local/bin/mkcert
     mode: '0755'
+  become: yes
+
+- name: Ensure bash_profile is loaded from bashrc
+  blockinfile:
+    dest: "~/.bashrc"
+    insertafter: EOF
+    block: |
+      if [ -f $HOME/.bash_profile ]; then
+        source $HOME/.bash_profile
+      fi
+
+- include: anyenv.yml
+- include: docker.yml

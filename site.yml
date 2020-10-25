@@ -6,6 +6,10 @@
     - drivers
     - development
     - security
-  become: yes
+  become: no
   vars:
     gpu: amd
+  pre_tasks:
+    - name: Get upstream name
+      shell: lsb_release -ucs
+      register: lsb_name

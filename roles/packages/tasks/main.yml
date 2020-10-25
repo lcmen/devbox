@@ -3,11 +3,13 @@
   apt:
     upgrade: safe
     update-cache: yes
+  become: yes
 
 - name: Add keys
   apt_key:
     url: "{{item}}"
     state: present
+  become: yes
   with_items: "{{keys}}"
   when: keys is defined
 
@@ -15,30 +17,43 @@
   apt_repository:
     repo: "{{item}}"
     state: present
+  become: yes
   with_items: "{{repositories}}"
 
 - name: Remove packages
   package:
     name: "{{item}}"
     state: absent
+  become: yes
   with_items: "{{removed_packages}}"
 
 - name: Install packages
   package:
     name: "{{item}}"
     state: latest
+  become: yes
   with_items: "{{packages}}"
 
 - name: Install flatpak apps
   flatpak:
-    name: "{{item}}"
+    name: "{{item.1}}"
+    remote: "{{item.0.remote}}"
     state: present
-  with_items: "{{flatpaks}}"
+  become: yes
+  with_subelements:
+    - "{{flatpaks}}"
+    - "packages"
+
+- name: Update flatpak apps
+  shell: flatpak update --noninteractive
+  become: yes
 
 - name: Configure time zone
   command: "timedatectl set-timezone {{ timezone }}"
+  become: yes
 
 - name: Ensure NTP is running
   service:
     name: ntp
     state: started
+  become: yes

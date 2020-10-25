@@ -1,0 +1,29 @@
+---
+- name: Check if anyenv installed
+  stat:
+    path: "{{ansible_env.HOME}}/.anyenv"
+  register: anyenv
+
+- name: Install anyenv
+  shell: "git clone {{anyenv_url}} {{ansible_env.HOME}}/.anyenv"
+  when: not anyenv.stat.exists
+
+- name: Install anyenv updater
+  shell: "git clone {{anyenv_updater_url}} {{ansible_env.HOME}}/.anyenv/plugins/anyenv-update"
+  when: not anyenv.stat.exists
+
+- name: Check if anyenv initialized
+  stat:
+    path: "{{ansible_env.HOME}}/.config/anyenv/anyenv-install"
+  register: anyenv_init
+
+- name: Initialize anyenv
+  shell: "{{ansible_env.HOME}}/.anyenv/bin/anyenv install --force-init"
+  when: not anyenv_init.stat.exists
+
+- name: Install anyenv plugins
+  shell: "{{ansible_env.HOME}}/.anyenv/bin/anyenv install {{item}} --skip-existing"
+  with_items: "{{anyenv_plugins}}"
+
+- name: Update anyenv
+  shell: "{{ansible_env.HOME}}/.anyenv/bin/anyenv update"

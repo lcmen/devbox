@@ -28,4 +28,4 @@ removed_packages:
   - docker.io
   - runc
 repositories:
-  - deb [arch=amd64] https://download.docker.com/linux/ubuntu
+  - "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{lsb_name.stdout}} stable"

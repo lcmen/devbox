@@ -8,39 +8,54 @@
   package:
     name: ufw
     state: latest
+  become: yes
 
 - name: Disable firewall
   ufw:
     state: disabled
+  become: yes
 
 - name: Reset firewall configuration
   ufw:
     state: reset
+  become: yes
 
 - name: Clear out all iptables rules
   shell: iptables -F && iptables -X
+  become: yes
 
 - name: Enable forward policy
   lineinfile:
     dest: /etc/default/ufw
     regexp: '^#?DEFAULT_FORWARD_POLICY'
     line: 'DEFAULT_FORWARD_POLICY="ACCEPT"'
+  become: yes
 
 - name: Deny incoming traffic by default
   ufw:
-    default: deny
-    name: incoming
+    policy: deny
+    direction: incoming
+  become: yes
 
 - name: Allow outgoing traffic by default
   ufw:
-    default: allow
-    name: outgoing
+    policy: allow
+    direction: outgoing
+  become: yes
 
 - name: Allow ssh
   ufw:
     rule: allow
     port: '22'
     proto: tcp
+  become: yes
+
+- name: Rate limit SSH
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+  become: yes
 
 - name: Configure ufw before rules for docker
   blockinfile:
@@ -52,7 +67,9 @@
       -A POSTROUTING ! -o docker0 -s 172.17.0.0/16 -j MASQUERADE
       COMMIT
   when: docker_is_installed.rc == 0
+  become: yes
 
 - name: Enable firewall
   ufw:
     state: enabled
+  become: yes
