@@ -6,6 +6,7 @@ anyenv_plugins:
   - rbenv
 keys:
   - https://download.docker.com/linux/ubuntu/gpg
+  - https://www.postgresql.org/media/keys/ACCC4CF8.asc
 mkcert_url: https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
 packages:
   - cmake
@@ -20,6 +21,9 @@ packages:
   - libmagickwand-dev
   - libncurses5-dev
   - libpq-dev
+  - postgresql-client-96
+  - postgresql-client-11
+  - postgresql-client-12
   - shellcheck
 removed_packages:
   - containerd
@@ -29,3 +33,4 @@ removed_packages:
   - runc
 repositories:
   - "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{lsb_name.stdout}} stable"
+  - "deb http://apt.postgresql.org/pub/repos/apt {{lsb_name.stdout}}-pgdg main"
