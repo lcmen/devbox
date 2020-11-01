@@ -9,7 +9,6 @@ packages:
   - chrome-gnome-shell
   - chromium-browser
   - elementary-tweaks
-  - flat-remix
   - flatpak
   - gparted
   - htop
@@ -21,7 +20,6 @@ packages:
   - openssl
   - pantheon-mail
   - patch
-  - papirus-icon-theme
   - silversearcher-ag
   - software-properties-common
   - sudo
@@ -39,8 +37,6 @@ removed_packages:
   - epiphany-browser-data
   - epiphany-extensions
 repositories:
-  - ppa:daniruiz/flat-remix
   - ppa:neovim-ppa/stable
-  - ppa:papirus/papirus
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw

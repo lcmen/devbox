@@ -5,11 +5,17 @@
   register: anyenv
 
 - name: Install anyenv
-  shell: "git clone {{anyenv_url}} {{ansible_env.HOME}}/.anyenv"
+  git:
+    repo: "{{anyenv_url}}"
+    dest: "{{ansible_env.HOME}}/.anyenv"
+    depth: 1
   when: not anyenv.stat.exists
 
 - name: Install anyenv updater
-  shell: "git clone {{anyenv_updater_url}} {{ansible_env.HOME}}/.anyenv/plugins/anyenv-update"
+  git:
+    repo: "{{anyenv_updater_url}}"
+    dest: "{{ansible_env.HOME}}/.anyenv/plugins/anyenv-update"
+    depth: 1
   when: not anyenv.stat.exists
 
 - name: Check if anyenv initialized

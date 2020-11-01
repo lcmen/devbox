@@ -6,8 +6,10 @@
     - drivers
     - development
     - security
+    - customization
   become: no
   vars:
+    ansible_python_interpreter: /usr/bin/python3
     gpu: amd
   pre_tasks:
     - name: Get upstream name

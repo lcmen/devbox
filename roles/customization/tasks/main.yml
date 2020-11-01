@@ -1,0 +1,11 @@
+---
+- name: Download Qogir icon pack
+  git:
+    repo: https://github.com/vinceliuice/Qogir-icon-theme.git
+    dest: "{{ansible_env.HOME}}/Code/src/github.com/vinceliuice/Qogir-icon-theme"
+    depth: 1
+
+- name: Install Qogir icons
+  shell: "./install.sh"
+  args:
+    chdir: "{{ansible_env.HOME}}/Code/src/github.com/vinceliuice/Qogir-icon-theme"

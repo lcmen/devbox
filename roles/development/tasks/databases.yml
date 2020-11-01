@@ -3,11 +3,28 @@
   docker_container:
     name: postgres13
     image: postgres:13
-    state: present
+    state: started
+    pull: yes
+    restart: yes
     restart_policy: unless-stopped
     env:
       POSTGRES_PASSWORD: postgres
-    exposed_ports:
-      - 5432
+    published_ports:
+      - "5432:5432"
     volumes:
       - postgres13-data:/var/lib/postgresql/data
+
+- name: Create Postgrees 11 server
+  docker_container:
+    name: postgres11
+    image: postgres:11
+    state: started
+    pull: yes
+    restart: yes
+    restart_policy: unless-stopped
+    env:
+      POSTGRES_PASSWORD: postgres
+    published_ports:
+      - "5433:5433"
+    volumes:
+      - postgres11-data:/var/lib/postgresql/data
