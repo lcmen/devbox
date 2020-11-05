@@ -9,3 +9,14 @@
   shell: "./install.sh"
   args:
     chdir: "{{code_path}}/src/github.com/vinceliuice/Qogir-icon-theme"
+
+- name: Download Gogh (terminal themes)
+  git:
+    repo: https://github.com/Mayccoll/Gogh.git
+    dest: "{{code_path}}/src/github.com/Mayccoll/Gogh"
+    depth: 1
+
+- name: Set one-light theme
+  shell: "./one-light.sh"
+  args:
+    chdir: "{{code_path}}/src/github/Mayccoll/Gogh/themes"
