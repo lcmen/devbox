@@ -1,7 +1,6 @@
 ---
 keys:
   - https://packages.microsoft.com/keys/microsoft.asc
-  - https://repo.vivaldi.com/archive/linux_signing_key.pub
 flatpaks:
   - remote: flathub
     packages:
@@ -14,6 +13,7 @@ packages:
   - flatpak
   - gparted
   - htop
+  - libreoffice
   - lsb
   - neovim
   - net-tools
@@ -31,7 +31,6 @@ packages:
   - tzdata
   - unzip
   - wget
-  - vivaldi-stable
   - xsel
 removed_packages:
   - epiphany-browser
@@ -39,7 +38,6 @@ removed_packages:
   - epiphany-browser-data
   - epiphany-extensions
 repositories:
-  - deb https://repo.vivaldi.com/archive/deb/ stable main
   - deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main
   - ppa:neovim-ppa/stable
   - ppa:philip.scott/elementary-tweaks
