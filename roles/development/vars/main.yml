@@ -21,11 +21,11 @@ packages:
   - libmagickwand-dev
   - libncurses5-dev
   - libpq-dev
+  - openssl
   - postgresql-client-9.6
   - postgresql-client-10
   - postgresql-client-11
   - postgresql-client-12
-  - postgresql-client-13
   - shellcheck
 removed_packages:
   - containerd

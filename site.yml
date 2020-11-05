@@ -10,6 +10,7 @@
   become: no
   vars:
     ansible_python_interpreter: /usr/bin/python3
+    code_path: "{{ansible_env.HOME}}/Code"
     gpu: amd
   pre_tasks:
     - name: Get upstream name

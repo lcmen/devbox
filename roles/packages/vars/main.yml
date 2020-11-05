@@ -9,7 +9,6 @@ flatpaks:
       - com.visualstudio.code
 packages:
   - build-essential
-  - chrome-gnome-shell
   - chromium-browser
   - elementary-tweaks
   - flatpak
@@ -20,9 +19,7 @@ packages:
   - net-tools
   - ntp
   - openssh-server
-  - openssl
   - pantheon-mail
-  - patch
   - silversearcher-ag
   - software-properties-common
   - sudo
