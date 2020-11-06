@@ -2,7 +2,6 @@
 - hosts: all
   roles:
     - packages
-    - gpu
     - drivers
     - development
     - security
@@ -10,8 +9,7 @@
   become: no
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    code_path: "{{ansible_env.HOME}}/Code"
-    gpu: amd
+    code_path: "{{ansible_env.HOME}}/Workspace"
   pre_tasks:
     - name: Get upstream name
       shell: lsb_release -ucs

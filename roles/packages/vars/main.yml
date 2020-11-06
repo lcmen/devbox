@@ -1,6 +1,9 @@
 ---
 keys:
   - https://packages.microsoft.com/keys/microsoft.asc
+flatpak_repos:
+  - name: flathub
+    url: https://flathub.org/repo/flathub.flatpakrepo
 flatpaks:
   - remote: flathub
     packages:
@@ -9,7 +12,11 @@ flatpaks:
 packages:
   - build-essential
   - chromium-browser
+  - com.github.alecaddd.sequeler
+  - com.github.donadigo.appeditor
+  - com.github.stsdc.monitor
   - elementary-tweaks
+  - firefox
   - flatpak
   - gparted
   - htop

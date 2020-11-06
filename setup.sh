@@ -10,3 +10,7 @@ pip3 install -r requirements.txt
 
 echo "Provisioning"
 ansible-playbook -i inventories/local site.yml
+
+echo "Cleaning up"
+echo "${pass}" | sudo -S apt autoremove
+echo "${pass}" | sudo -S apt autoclean

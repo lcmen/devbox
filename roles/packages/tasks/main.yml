@@ -20,6 +20,14 @@
   become: yes
   with_items: "{{repositories}}"
 
+- name: Add flatpak repos
+  flatpak_remote:
+    name: "{{item.name}}"
+    flatpakrepo_url: "{{item.url}}"
+    state: present
+  become: yes
+  with_items: "{{flatpak_repos}}"
+
 - name: Remove packages
   package:
     name: "{{item}}"
