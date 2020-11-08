@@ -1,4 +1,12 @@
 ---
+- name: Tweak gtk styles
+  copy:
+    src: gtk.css
+    dest: "{{ansible_env.HOME}}/.config/gtk-3/gtk.css"
+
+- name: Restart wingpanel
+  shell: killall wingpanel
+
 - name: Download Qogir icon pack
   git:
     repo: https://github.com/vinceliuice/Qogir-icon-theme.git

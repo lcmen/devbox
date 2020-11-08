@@ -7,6 +7,7 @@ flatpak_repos:
 flatpaks:
   - remote: flathub
     packages:
+      - org.gnome.DejaDup
       - com.skype.Client
       - com.visualstudio.code
 packages:
@@ -14,6 +15,7 @@ packages:
   - chromium-browser
   - com.github.alecaddd.sequeler
   - com.github.donadigo.appeditor
+  - com.github.ronnydo.colorpicker
   - com.github.stsdc.monitor
   - elementary-tweaks
   - firefox

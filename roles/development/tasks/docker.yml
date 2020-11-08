@@ -1,8 +1,9 @@
 ---
-- name: Disable iptables for Docker
-  copy:
-    src: docker-daemon.json
+- name: Update docker config
+  template:
+    src: docker-daemon.json.j2
     dest: /etc/docker/daemon.json
+    mode: '0644'
   become: yes
 
 - name: Create docker group
