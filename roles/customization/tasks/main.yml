@@ -2,7 +2,7 @@
 - name: Tweak gtk styles
   copy:
     src: gtk.css
-    dest: "{{ansible_env.HOME}}/.config/gtk-3/gtk.css"
+    dest: "{{ansible_env.HOME}}/.config/gtk-3.0/gtk.css"
 
 - name: Restart wingpanel
   shell: killall wingpanel
