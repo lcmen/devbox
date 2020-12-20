@@ -1,6 +1,5 @@
 ---
 packages:
-  - cmake
-  - libconfig++-dev
-  - libevdev-dev
-  - libudev-dev
+  - solaar
+repositories:
+  - ppa:solaar-unifying/stable

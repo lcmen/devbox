@@ -1,13 +1,10 @@
 ---
-keys:
-  - https://packages.microsoft.com/keys/microsoft.asc
 flatpak_repos:
   - name: flathub
     url: https://flathub.org/repo/flathub.flatpakrepo
 flatpaks:
   - remote: flathub
     packages:
-      - org.gnome.DejaDup
       - com.skype.Client
       - com.visualstudio.code
 packages:
@@ -22,7 +19,6 @@ packages:
   - flatpak
   - gparted
   - htop
-  - libreoffice
   - lsb
   - neovim
   - net-tools
@@ -33,7 +29,6 @@ packages:
   - software-properties-common
   - sudo
   - tar
-  - teams
   - tig
   - tmux
   - tree
@@ -47,7 +42,6 @@ removed_packages:
   - epiphany-browser-data
   - epiphany-extensions
 repositories:
-  - deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main
   - ppa:neovim-ppa/stable
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw

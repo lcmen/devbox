@@ -1,28 +1,14 @@
 ---
+- name: Add repositories
+  apt_repository:
+    repo: "{{item}}"
+    state: present
+  become: yes
+  with_items: "{{repositories}}"
+
 - name: Install packages
   package:
     name: "{{item}}"
     state: latest
   become: yes
   with_items: "{{packages}}"
-
-- name: Clone logiops
-  git:
-    repo: https://github.com/PixlOne/logiops.git
-    dest: "{{code_path}}/src/github.com/PixlOne/logiops"
-
-- name: Create logiops build directory
-  file:
-    path: "{{code_path}}/src/github.com/PixlOne/logiops/build"
-    state: directory
-
-- name: Build logiops
-  shell: cmake .. && make
-  args:
-    chdir: "{{code_path}}/src/github.com/PixlOne/logiops/build"
-
-- name: Install logiops
-  shell: make install
-  args:
-    chdir: "{{code_path}}/src/github.com/PixlOne/logiops/build"
-  become: yes
