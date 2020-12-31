@@ -1,15 +1,18 @@
 ---
+keys:
+  - https://brave-browser-apt-release.s3.brave.com/brave-core.asc
 flatpak_repos:
   - name: flathub
     url: https://flathub.org/repo/flathub.flatpakrepo
 flatpaks:
   - remote: flathub
     packages:
+      - com.getpostman.Postman
       - com.skype.Client
       - com.visualstudio.code
 packages:
+  - brave-browser
   - build-essential
-  - chromium-browser
   - com.github.alecaddd.sequeler
   - com.github.donadigo.appeditor
   - com.github.ronnydo.colorpicker
@@ -42,6 +45,7 @@ removed_packages:
   - epiphany-browser-data
   - epiphany-extensions
 repositories:
+  - deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
   - ppa:neovim-ppa/stable
   - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw

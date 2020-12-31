@@ -7,31 +7,31 @@
 - name: Restart wingpanel
   shell: killall wingpanel
 
+- name: Create fonts directory
+  file:
+    path: "{{ansible_env.HOME}}/.local/share/fonts"
+    state: directory
+
+- name: Install fonts
+  get_url:
+    url: "{{item}}"
+    dest: "{{ansible_env.HOME}}/.local/share/fonts"
+  with_items: "{{fonts}}"
+
 - name: Download Qogir icon pack
   git:
-    repo: https://github.com/vinceliuice/Qogir-icon-theme.git
-    dest: "{{code_path}}/src/github.com/vinceliuice/Qogir-icon-theme"
+    repo: https://github.com/lowski/Qogir-icon-theme.git
+    dest: "{{code_path}}/src/github.com/lowski/Qogir-icon-theme"
+    version: elementary-variant
     depth: 1
 
 - name: Install Qogir icons
   shell: "./install.sh"
   args:
-    chdir: "{{code_path}}/src/github.com/vinceliuice/Qogir-icon-theme"
-
-- name: Download Elementary icons
-  git:
-    repo: https://github.com/varlesh/elementary-add.git
-    dest: "{{code_path}}/src/github.com/varlesh/elementary-add"
-    dept: 1
+    chdir: "{{code_path}}/src/github.com/lowski/Qogir-icon-theme"
 
 - name: Download Gogh (terminal themes)
   git:
     repo: https://github.com/Mayccoll/Gogh.git
     dest: "{{code_path}}/src/github.com/Mayccoll/Gogh"
     depth: 1
-
-- name: Install Elementary icons
-  file:
-    src: "{{code_path}}/src/github.com/varlesh/elementary-add/elementary-add"
-    dest: "{{ansible_env.HOME}}/.local/share/icons/elementary-add"
-    state: link
