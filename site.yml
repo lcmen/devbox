@@ -12,5 +12,5 @@
     code_path: "{{ansible_env.HOME}}/Workspace"
   pre_tasks:
     - name: Get upstream name
-      shell: lsb_release -ucs
+      shell: lsb_release -ucs 2>/dev/null || lsb_release -cs
       register: lsb_name
