@@ -1,5 +1,11 @@
 ---
 packages:
+  - libavcodec58
+  - libldac
+  - pulseaudio
+  - pulseaudio-modules-bt
+  - pulseaudio-module-bluetooth
   - solaar
 repositories:
+  - ppa:eh5/pulseaudio-a2dp
   - ppa:solaar-unifying/stable

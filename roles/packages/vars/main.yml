@@ -9,43 +9,30 @@ flatpaks:
     packages:
       - com.getpostman.Postman
       - com.skype.Client
-      - com.visualstudio.code
 packages:
   - brave-browser
   - build-essential
-  - com.github.alecaddd.sequeler
   - com.github.donadigo.appeditor
   - com.github.ronnydo.colorpicker
   - com.github.stsdc.monitor
-  - elementary-tweaks
   - firefox
+  - ffmpeg
   - flatpak
-  - gparted
-  - htop
   - lsb
   - neovim
   - net-tools
   - ntp
   - openssh-server
-  - pantheon-mail
   - silversearcher-ag
   - software-properties-common
   - sudo
   - tar
   - tig
   - tmux
-  - tree
   - tzdata
-  - unzip
   - wget
   - xsel
-removed_packages:
-  - epiphany-browser
-  - epiphany-browser-data
-  - epiphany-browser-data
-  - epiphany-extensions
 repositories:
   - deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
   - ppa:neovim-ppa/stable
-  - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw

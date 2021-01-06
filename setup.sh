@@ -3,7 +3,10 @@
 read -r -s -p "[sudo] sudo password for $(whoami): " pass
 
 echo "Installinb Ansible and its dependencies"
-echo "${pass}" | sudo -S apt install --yes --no-install-recommends python3-pip software-properties-common
+echo "${pass}" | sudo -S apt install --yes --no-install-recommends \
+  python3-pip \
+  python3-setuptools \
+  software-properties-common
 pip3 install -r requirements.txt
 
 echo "Provisioning"

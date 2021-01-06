@@ -5,6 +5,7 @@ anyenv_plugins:
   - nodenv
   - rbenv
 keys:
+  - http://deb.tableplus.com/apt.tableplus.com.gpg.key
   - https://download.docker.com/linux/ubuntu/gpg
   - https://www.postgresql.org/media/keys/ACCC4CF8.asc
 mkcert_url: https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
@@ -27,8 +28,10 @@ packages:
   - postgresql-client-10
   - postgresql-client-11
   - postgresql-client-12
+  - postgresql-client-13
   - postgresql-client-9.6
   - shellcheck
+  - tableplus
 removed_packages:
   - containerd
   - docker
@@ -36,5 +39,6 @@ removed_packages:
   - docker.io
   - runc
 repositories:
+  - "deb [arch=amd64] https://deb.tableplus.com/debian tableplus main"
   - "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{lsb_name.stdout}} stable"
   - "deb http://apt.postgresql.org/pub/repos/apt {{lsb_name.stdout}}-pgdg main"
