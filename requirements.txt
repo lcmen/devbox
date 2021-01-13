@@ -1,2 +1,1 @@
-ansible==2.10.4
 docker==4.3.1

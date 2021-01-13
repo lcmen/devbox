@@ -4,8 +4,6 @@ packages:
   - libldac
   - pulseaudio
   - pulseaudio-modules-bt
-  - pulseaudio-module-bluetooth
-  - solaar
+  # - pulseaudio-module-bluetooth
 repositories:
   - ppa:eh5/pulseaudio-a2dp
-  - ppa:solaar-unifying/stable

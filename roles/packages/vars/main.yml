@@ -15,8 +15,9 @@ packages:
   - com.github.donadigo.appeditor
   - com.github.ronnydo.colorpicker
   - com.github.stsdc.monitor
-  - firefox
+  - elementary-tweaks
   - ffmpeg
+  - firefox
   - flatpak
   - lsb
   - neovim
@@ -32,7 +33,13 @@ packages:
   - tzdata
   - wget
   - xsel
+removed_packages:
+  - epiphany-browser
+  - epiphany-browser-data
+  - epiphany-browser-data
+  - epiphany-extensions
 repositories:
   - deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
   - ppa:neovim-ppa/stable
+  - ppa:philip.scott/elementary-tweaks
 timezone: Europe/Warsaw

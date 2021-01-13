@@ -18,12 +18,12 @@
     dest: "{{ansible_env.HOME}}/.local/share/fonts"
   with_items: "{{fonts}}"
 
-# - name: Download Qogir icon pack
-#   git:
-#     repo: https://github.com/lowski/Qogir-icon-theme.git
-#     dest: "{{code_path}}/src/github.com/lowski/Qogir-icon-theme"
-#     version: elementary-variant
-#     depth: 1
+- name: Download Qogir icon pack
+  git:
+    repo: https://github.com/lowski/Qogir-icon-theme.git
+    dest: "{{code_path}}/src/github.com/lowski/Qogir-icon-theme"
+    version: elementary-variant
+    depth: 1
 
 # - name: Install Qogir icons
 #   shell: "./install.sh"

@@ -53,7 +53,7 @@
     - "packages"
 
 - name: Update flatpak apps
-  shell: flatpak update --noninteractive
+  shell: flatpak update --noninteractive 
   become: yes
 
 - name: Configure time zone
