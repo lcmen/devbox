@@ -1,9 +1,9 @@
 ---
-- name: System upgrade
-  apt:
-    upgrade: safe
-    update-cache: yes
-  become: yes
+# - name: System upgrade
+#   apt:
+#     upgrade: safe
+#     update-cache: yes
+#   become: yes
 
 - name: Add keys
   apt_key:
@@ -20,14 +20,6 @@
   become: yes
   with_items: "{{repositories}}"
 
-- name: Add flatpak repos
-  flatpak_remote:
-    name: "{{item.name}}"
-    flatpakrepo_url: "{{item.url}}"
-    state: present
-  become: yes
-  with_items: "{{flatpak_repos}}"
-
 - name: Remove packages
   package:
     name: "{{item}}"
@@ -35,12 +27,40 @@
   become: yes
   with_items: "{{removed_packages}}"
 
-- name: Install packages
+- name: Update all packages to their latest version
+  apt:
+    name: "*"
+    state: latest
+  become: yes
+
+- name: Install new packages
   package:
     name: "{{item}}"
     state: latest
+    install_recommends: no
   become: yes
   with_items: "{{packages}}"
+  when: packages is defined
+
+- name: Install new debs
+  apt:
+    deb: "{{item}}"
+  become: yes
+  with_items: "{{debs}}"
+  when: debs is defined
+
+- name: Add flatpak repos
+  flatpak_remote:
+    name: "{{item.name}}"
+    flatpakrepo_url: "{{item.url}}"
+    state: present
+  become: yes
+  with_items: "{{flatpak_repos}}"
+  when: flatpak_repos is defined
+
+- name: Update all flatpaks to their latest version
+  shell: flatpak update --noninteractive
+  become: yes
 
 - name: Install flatpak apps
   flatpak:
@@ -51,10 +71,7 @@
   with_subelements:
     - "{{flatpaks}}"
     - "packages"
-
-- name: Update flatpak apps
-  shell: flatpak update --noninteractive 
-  become: yes
+  when: flatpaks is defined
 
 - name: Configure time zone
   command: "timedatectl set-timezone {{ timezone }}"

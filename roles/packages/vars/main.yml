@@ -1,21 +1,20 @@
 ---
 keys:
-  - https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+  - https://dl.google.com/linux/linux_signing_key.pub
 flatpak_repos:
   - name: flathub
     url: https://flathub.org/repo/flathub.flatpakrepo
+debs:
+  - https://github.com/timche/gmail-desktop/releases/download/v2.20.4/gmail-desktop-2.20.4-linux.deb
 flatpaks:
   - remote: flathub
     packages:
       - com.getpostman.Postman
       - com.skype.Client
 packages:
-  - brave-browser
   - build-essential
-  - com.github.donadigo.appeditor
-  - com.github.ronnydo.colorpicker
-  - com.github.stsdc.monitor
-  - elementary-tweaks
+  - google-chrome-stable
+  - gnome-tweaks
   - ffmpeg
   - firefox
   - flatpak
@@ -24,6 +23,7 @@ packages:
   - net-tools
   - ntp
   - openssh-server
+  - papirus-icon-theme
   - silversearcher-ag
   - software-properties-common
   - sudo
@@ -33,13 +33,8 @@ packages:
   - tzdata
   - wget
   - xsel
-removed_packages:
-  - epiphany-browser
-  - epiphany-browser-data
-  - epiphany-browser-data
-  - epiphany-extensions
 repositories:
-  - deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+  - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
   - ppa:neovim-ppa/stable
-  - ppa:philip.scott/elementary-tweaks
+  - ppa:papirus/papirus
 timezone: Europe/Warsaw

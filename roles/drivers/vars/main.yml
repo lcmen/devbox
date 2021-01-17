@@ -4,6 +4,5 @@ packages:
   - libldac
   - pulseaudio
   - pulseaudio-modules-bt
-  # - pulseaudio-module-bluetooth
 repositories:
-  - ppa:eh5/pulseaudio-a2dp
+  - ppa:berglh/pulseaudio-a2dp

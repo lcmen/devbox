@@ -1,12 +1,4 @@
 ---
-- name: Tweak gtk styles
-  copy:
-    src: gtk.css
-    dest: "{{ansible_env.HOME}}/.config/gtk-3.0/gtk.css"
-
-- name: Restart wingpanel
-  shell: killall wingpanel
-
 - name: Create fonts directory
   file:
     path: "{{ansible_env.HOME}}/.local/share/fonts"
@@ -17,21 +9,3 @@
     url: "{{item}}"
     dest: "{{ansible_env.HOME}}/.local/share/fonts"
   with_items: "{{fonts}}"
-
-- name: Download Qogir icon pack
-  git:
-    repo: https://github.com/lowski/Qogir-icon-theme.git
-    dest: "{{code_path}}/src/github.com/lowski/Qogir-icon-theme"
-    version: elementary-variant
-    depth: 1
-
-# - name: Install Qogir icons
-#   shell: "./install.sh"
-#   args:
-#     chdir: "{{code_path}}/src/github.com/lowski/Qogir-icon-theme"
-
-- name: Download Gogh (terminal themes)
-  git:
-    repo: https://github.com/Mayccoll/Gogh.git
-    dest: "{{code_path}}/src/github.com/Mayccoll/Gogh"
-    depth: 1
