@@ -1,2 +1,9 @@
 fonts:
   - https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf
+packages:
+  - arc-theme
+  - fonts-font-awesome
+  - fonts-noto-color-emoji
+  - pop-fonts
+repositories:
+  - ppa:system76/pop

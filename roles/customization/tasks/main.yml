@@ -1,11 +1,27 @@
 ---
+- name: Add repositories
+  apt_repository:
+    repo: "{{item}}"
+    state: present
+  become: yes
+  with_items: "{{repositories}}"
+
 - name: Create fonts directory
   file:
     path: "{{ansible_env.HOME}}/.local/share/fonts"
     state: directory
 
-- name: Install fonts
+- name: Install custom fonts
   get_url:
     url: "{{item}}"
     dest: "{{ansible_env.HOME}}/.local/share/fonts"
   with_items: "{{fonts}}"
+
+- name: Install new packages
+  package:
+    name: "{{item}}"
+    state: latest
+    install_recommends: no
+  become: yes
+  with_items: "{{packages}}"
+  when: packages is defined
