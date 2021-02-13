@@ -10,11 +10,16 @@ flatpaks:
   - remote: flathub
     packages:
       - com.getpostman.Postman
+      - com.github.IsmaelMartinez.teams_for_linux
+      - com.microsoft.Teams
       - com.skype.Client
 packages:
   - build-essential
+  - cryptsetup
+  - ecryptfs-utils
   - google-chrome-stable
   - gnome-tweaks
+  - gthumb
   - ffmpeg
   - firefox
   - flatpak
@@ -33,6 +38,8 @@ packages:
   - tzdata
   - wget
   - xsel
+removed_packages:
+  - eog
 repositories:
   - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
   - ppa:neovim-ppa/stable

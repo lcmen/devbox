@@ -17,6 +17,7 @@ packages:
   - docker-ce
   - docker-ce-cli
   - git
+  - git-lfs
   - imagemagick
   - jq
   - libmagickwand-dev

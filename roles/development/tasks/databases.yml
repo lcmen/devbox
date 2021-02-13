@@ -1,20 +1,5 @@
 ---
-- name: Create Postgrees 12 server
-  docker_container:
-    name: postgres12
-    image: postgres:12
-    state: started
-    pull: yes
-    restart: yes
-    restart_policy: unless-stopped
-    env:
-      POSTGRES_PASSWORD: postgres
-    published_ports:
-      - "5432:5432"
-    volumes:
-      - postgres12-data:/var/lib/postgresql/data
-
-- name: Create Postgrees 11 server
+- name: Create Postgres 11 server
   docker_container:
     name: postgres11
     image: postgres:11
@@ -28,3 +13,18 @@
       - "5431:5432"
     volumes:
       - postgres11-data:/var/lib/postgresql/data
+
+- name: Create Postgres 12 server
+  docker_container:
+    name: postgres12
+    image: postgres:12
+    state: started
+    pull: yes
+    restart: yes
+    restart_policy: unless-stopped
+    env:
+      POSTGRES_PASSWORD: postgres
+    published_ports:
+      - "5432:5432"
+    volumes:
+      - postgres12-data:/var/lib/postgresql/data
