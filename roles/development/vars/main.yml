@@ -16,6 +16,7 @@ packages:
   - direnv
   - docker-ce
   - docker-ce-cli
+  - fzf
   - git
   - git-lfs
   - imagemagick

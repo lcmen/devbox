@@ -13,6 +13,7 @@ flatpaks:
       - com.github.IsmaelMartinez.teams_for_linux
       - com.microsoft.Teams
       - com.skype.Client
+      - com.spotify.Client
 packages:
   - build-essential
   - cryptsetup

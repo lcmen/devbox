@@ -28,13 +28,6 @@
   become: yes
   with_items: "{{packages}}"
 
-- name: Install mkcert
-  get_url:
-    url: "{{mkcert_url}}"
-    dest: /usr/local/bin/mkcert
-    mode: '0755'
-  become: yes
-
 - name: Ensure bash_profile is loaded from bashrc
   blockinfile:
     dest: "~/.bashrc"
@@ -43,6 +36,15 @@
       if [ -f $HOME/.bash_profile ]; then
         source $HOME/.bash_profile
       fi
+
+- name: Increase inotify limits
+  blockinfile:
+    dest: "/etc/sysctl.conf"
+    insertafter: EOF
+    block: |
+      fs.inotify.max_user_watches=524288
+  notify: reload sysctl.conf
+  become: yes
 
 - include: anyenv.yml
 - include: docker.yml
