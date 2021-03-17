@@ -5,12 +5,11 @@ flatpak_repos:
   - name: flathub
     url: https://flathub.org/repo/flathub.flatpakrepo
 debs:
-  - https://github.com/timche/gmail-desktop/releases/download/v2.20.4/gmail-desktop-2.20.4-linux.deb
+  - https://updates.duplicati.com/beta/duplicati_2.0.5.1-1_all.deb
 flatpaks:
   - remote: flathub
     packages:
       - com.getpostman.Postman
-      - com.github.IsmaelMartinez.teams_for_linux
       - com.microsoft.Teams
       - com.skype.Client
       - com.spotify.Client
@@ -20,6 +19,7 @@ packages:
   - ecryptfs-utils
   - google-chrome-stable
   - gnome-tweaks
+  - gparted
   - gthumb
   - ffmpeg
   - firefox
@@ -30,6 +30,7 @@ packages:
   - ntp
   - openssh-server
   - papirus-icon-theme
+  - peek
   - silversearcher-ag
   - software-properties-common
   - sudo
@@ -45,4 +46,5 @@ repositories:
   - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
   - ppa:neovim-ppa/stable
   - ppa:papirus/papirus
+  - ppa:peek-developers/stable
 timezone: Europe/Warsaw
