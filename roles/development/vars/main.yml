@@ -41,6 +41,6 @@ removed_packages:
   - docker.io
   - runc
 repositories:
-  - "deb [arch=amd64] https://deb.tableplus.com/debian tableplus main"
-  - "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{lsb_name.stdout}} stable"
-  - "deb http://apt.postgresql.org/pub/repos/apt {{lsb_name.stdout}}-pgdg main"
+  - deb [arch=amd64] https://deb.tableplus.com/debian tableplus main
+  - deb [arch=amd64] https://download.docker.com/linux/ubuntu {{lsb_name.stdout}} stable
+  - deb http://apt.postgresql.org/pub/repos/apt {{lsb_name.stdout}}-pgdg main

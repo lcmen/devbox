@@ -9,10 +9,11 @@ debs:
 flatpaks:
   - remote: flathub
     packages:
+      - com.discordapp.Discord
       - com.getpostman.Postman
       - com.microsoft.Teams
-      - com.skype.Client
       - com.spotify.Client
+      - com.valvesoftware.Steam
 packages:
   - build-essential
   - cryptsetup
