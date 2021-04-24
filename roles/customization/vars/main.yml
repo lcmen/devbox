@@ -4,6 +4,3 @@ packages:
   - arc-theme
   - fonts-font-awesome
   - fonts-noto-color-emoji
-  - pop-fonts
-repositories:
-  - ppa:system76/pop

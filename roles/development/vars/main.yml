@@ -6,7 +6,9 @@ anyenv_plugins:
   - rbenv
 keys:
   - http://deb.tableplus.com/apt.tableplus.com.gpg.key
+  - https://cli-assets.heroku.com/apt/release.key
   - https://download.docker.com/linux/ubuntu/gpg
+  - https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
   - https://www.postgresql.org/media/keys/ACCC4CF8.asc
 mkcert_url: https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
 packages:
@@ -19,6 +21,7 @@ packages:
   - fzf
   - git
   - git-lfs
+  - heroku
   - imagemagick
   - jq
   - libmagickwand-dev
@@ -44,3 +47,5 @@ repositories:
   - deb [arch=amd64] https://deb.tableplus.com/debian tableplus main
   - deb [arch=amd64] https://download.docker.com/linux/ubuntu {{lsb_name.stdout}} stable
   - deb http://apt.postgresql.org/pub/repos/apt {{lsb_name.stdout}}-pgdg main
+  - deb https://cli-assets.heroku.com/apt ./
+  - deb https://packages.erlang-solutions.com/ubuntu {{lsb_name.stdout}} contrib

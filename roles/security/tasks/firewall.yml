@@ -50,6 +50,20 @@
     proto: tcp
   become: yes
 
+- name: Allow Samba
+  ufw:
+    rule: allow
+    app: Samba
+  become: yes
+
+- name: Allow ports for development
+  ufw:
+    rule: allow
+    port: "{{item}}"
+    proto: tcp
+  become: yes
+  with_items: "{{dev_ports}}"
+
 - name: Rate limit SSH
   ufw:
     rule: limit

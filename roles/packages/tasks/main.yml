@@ -1,9 +1,10 @@
 ---
-# - name: System upgrade
-#   apt:
-#     upgrade: safe
-#     update-cache: yes
-#   become: yes
+- name: System upgrade
+  apt:
+    autoremove: yes
+    upgrade: dist
+    update-cache: yes
+  become: yes
 
 - name: Add keys
   apt_key:
@@ -26,12 +27,6 @@
     state: absent
   become: yes
   with_items: "{{removed_packages}}"
-
-- name: Update all packages to their latest version
-  apt:
-    name: "*"
-    state: latest
-  become: yes
 
 - name: Install new packages
   package:
