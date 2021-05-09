@@ -28,6 +28,7 @@ packages:
   - libncurses5-dev
   - libpq-dev
   - libreadline-dev
+  - libsqlite3-dev
   - libssl-dev
   - openssl
   - postgresql-client-10
