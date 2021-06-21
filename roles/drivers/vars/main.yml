@@ -2,7 +2,7 @@
 packages:
   - libavcodec58
   - libldac
-  - pulseaudio
-  - pulseaudio-module-bluetooth
+  - pulseaudio-modules-bt
 repositories:
+  - ppa:berglh/pulseaudio-a2dp
   - ppa:kisak/kisak-mesa

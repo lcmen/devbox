@@ -45,7 +45,7 @@ removed_packages:
   - eog
 repositories:
   - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-  - ppa:neovim-ppa/stable
+  - ppa:neovim-ppa/unstable
   - ppa:papirus/papirus
   - ppa:peek-developers/stable
 timezone: Europe/Warsaw
