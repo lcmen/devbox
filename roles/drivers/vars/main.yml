@@ -1,8 +1,9 @@
 ---
+keys:
+  https://download.opensuse.org/repositories/home:pzz/xUbuntu_20.04/Release.key
 packages:
-  - libavcodec58
-  - libldac
-  - pulseaudio-modules-bt
+  - sane-airscan
+  - simplescan
 repositories:
-  - ppa:berglh/pulseaudio-a2dp
+  - deb http://download.opensuse.org/repositories/home:/pzz/xUbuntu_20.04/
   - ppa:kisak/kisak-mesa

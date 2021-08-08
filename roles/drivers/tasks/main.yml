@@ -1,14 +1,24 @@
 ---
-- name: Add repositories
+- name: Add driver repository keys
+  apt_key:
+    url: "{{item}}"
+    state: present
+  become: yes
+  with_items: "{{keys}}"
+  when: keys is defined
+
+- name: Install new drivers
+  package:
+    name: "{{item}}"
+    state: latest
+    install_recommends: no
+  become: yes
+  with_items: "{{packages}}"
+  when: packages is defined
+
+- name: Add driver repositories
   apt_repository:
     repo: "{{item}}"
     state: present
   become: yes
   with_items: "{{repositories}}"
-
-- name: Install packages
-  package:
-    name: "{{item}}"
-    state: latest
-  become: yes
-  with_items: "{{packages}}"

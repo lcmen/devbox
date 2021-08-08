@@ -2,6 +2,7 @@
 anyenv_url: https://github.com/anyenv/anyenv.git
 anyenv_updater_url: https://github.com/znz/anyenv-update.git
 anyenv_plugins:
+  - exenv
   - nodenv
   - rbenv
 keys:
@@ -9,8 +10,8 @@ keys:
   - https://cli-assets.heroku.com/apt/release.key
   - https://download.docker.com/linux/ubuntu/gpg
   - https://packages.microsoft.com/keys/microsoft.asc
-mkcert_url: https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
 packages:
+  - bat
   - cmake
   - code
   - curl

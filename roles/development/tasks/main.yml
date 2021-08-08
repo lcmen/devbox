@@ -28,6 +28,15 @@
   become: yes
   with_items: "{{packages}}"
 
+- name: Install packages from URLs
+  unarchive:
+    src: "{{item}}"
+    dest: "/usr/local/bin"
+    mode: '0755'
+    remote_src: True
+  become: yes
+  with_items: "{{remote_packages}}"
+
 - name: Ensure bash_profile is loaded from bashrc
   blockinfile:
     dest: "~/.bashrc"
