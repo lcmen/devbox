@@ -13,6 +13,7 @@ flatpaks:
       - com.getpostman.Postman
       - com.microsoft.Teams
       - com.spotify.Client
+      - com.transmissionbt.Transmission/x86_64/stable
       - com.valvesoftware.Steam
 packages:
   - build-essential
