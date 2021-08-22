@@ -36,6 +36,7 @@
     remote_src: True
   become: yes
   with_items: "{{remote_packages}}"
+  when: remote_packages is defined
 
 - name: Ensure bash_profile is loaded from bashrc
   blockinfile:
