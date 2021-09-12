@@ -5,7 +5,7 @@ flatpak_repos:
   - name: flathub
     url: https://flathub.org/repo/flathub.flatpakrepo
 debs:
-  - https://updates.duplicati.com/beta/duplicati_2.0.5.1-1_all.deb
+  - https://github.com/duplicati/duplicati/releases/download/v2.0.6.100-2.0.6.100_canary_2021-08-11/duplicati_2.0.6.100-1_all.deb
 flatpaks:
   - remote: flathub
     packages:
