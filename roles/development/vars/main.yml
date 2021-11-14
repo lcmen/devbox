@@ -19,7 +19,7 @@ packages:
   - direnv
   - docker-ce
   - docker-ce-cli
-  - erlang
+  - esl-erlang
   - git
   - git-lfs
   - heroku
