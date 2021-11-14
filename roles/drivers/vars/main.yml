@@ -6,4 +6,3 @@ packages:
   - simple-scan
 repositories:
   - deb http://download.opensuse.org/repositories/home:/pzz/xUbuntu_20.04/ /
-  - ppa:kisak/kisak-mesa

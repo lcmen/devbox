@@ -10,9 +10,7 @@ keys:
   - https://cli-assets.heroku.com/apt/release.key
   - https://download.docker.com/linux/ubuntu/gpg
   - https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
-  - https://packages.microsoft.com/keys/microsoft.asc
 packages:
-  - bat
   - cmake
   - code
   - curl
@@ -44,6 +42,5 @@ removed_packages:
 repositories:
   - deb [arch=amd64] https://deb.tableplus.com/debian tableplus main
   - deb [arch=amd64] https://download.docker.com/linux/ubuntu {{lsb_name.stdout}} stable
-  - deb [arch=amd64] https://packages.microsoft.com/repos/code stable main
   - deb https://cli-assets.heroku.com/apt ./
   - deb https://packages.erlang-solutions.com/ubuntu {{lsb_name.stdout}} contrib
