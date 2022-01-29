@@ -56,6 +56,5 @@
   notify: reload sysctl.conf
   become: yes
 
-- include: anyenv.yml
 - include: docker.yml
 - include: databases.yml
